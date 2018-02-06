@@ -1,0 +1,236 @@
+@startuml
+
+title __CONTROL's Class Diagram__\n
+
+  package  {
+    package simulator.control {
+      class AdapterManager {
+          - adapterProfiles : ArrayList<Adapter>
+          + AdapterManager()
+          + registerProfile()
+          + deleteProfile()
+          + modifyProfile()
+          + retrieveProfile()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class AdministrationManager {
+          + AdministrationManager()
+          + logIn()
+          + logOut()
+          + signOn()
+          + retrieveSession()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class ComponentManager {
+          - componentProfiles : ArrayList<Component>
+          + ComponentManager()
+          + registerProfile()
+          + deleteProfile()
+          + modifyProfile()
+          + retrieveProfile()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class EventManager {
+          - eventProfiles : ArrayList<Event>
+          + EventManager()
+          + registerProfile()
+          + deleteProfile()
+          + modifyProfile()
+          + retrieveProfile()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class ExecutionManager {
+          + ExecutionManager()
+          + designSimulationMethod()
+          + executeEventService()
+          - estimateEventServiceSimulation()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class QualityManager {
+          + QualityManager()
+          + startMonitoringService()
+          + stopMonitoringService()
+          + pauseMonitoringService()
+          + retrieveServiceQuality()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class ServiceManager {
+          - serviceProfiles : ArrayList<Service>
+          + ServiceManager()
+          + registerProfile()
+          + deleteProfile()
+          + modifyProfile()
+          + retrieveProfile()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class SimulationManager {
+          + SimulationManager()
+          + SimulationManager()
+          + chooseArchitectureDescription()
+          + chooseSystemProfile()
+          + startSimulation()
+          + stopSimulation()
+          + pauseSimulation()
+          + reportSimulation()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class SimulatorProxy {
+          + SimulatorProxy()
+          - initSimulator()
+          + getSimulationManager()
+          + getExecutionManager()
+          + getQualityManager()
+          + getAdminManager()
+          + getSystemManager()
+          + getUserManager()
+          + getSourceManager()
+          + getAdapterManager()
+          + getEventManager()
+          + getServiceManager()
+          + getComponentManager()
+          + signOn()
+          + logIn()
+          + logOut()
+          + registerProfile()
+          + registerProfile()
+          + registerProfile()
+          + registerProfile()
+          + registerProfile()
+          + registerProfile()
+          + registerProfile()
+          + chooseAd()
+          + chooseSystemProfile()
+          + startSimulation()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class SourceManager {
+          - sourceProfiles : ArrayList<Source>
+          + SourceManager()
+          + registerProfile()
+          + deleteProfile()
+          + modifyProfile()
+          + retrieveProfile()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class SystemManager {
+          - systemProfiles : ArrayList<SystemProfile>
+          + SystemManager()
+          + registerProfile()
+          + deleteProfile()
+          + modifyProfile()
+          + retrieveProfile()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.control {
+      class UserManager {
+          - userProfiles : ArrayList<UserProfile>
+          + UserManager()
+          + isRegistered()
+          + registerProfile()
+          + deleteProfile()
+          + modifyProfile()
+          + retrieveProfile()
+      }
+    }
+  }
+  
+
+  AdapterManager -up-|> IAdapterManager
+  AdapterManager o-- SimulatorProxy : proxy
+  AdministrationManager -up-|> IAdministrationManager
+  AdministrationManager o-- SimulatorProxy : proxy
+  ComponentManager -up-|> IComponentManager
+  ComponentManager o-- SimulatorProxy : interactor
+  EventManager -up-|> IEventManager
+  EventManager o-- SimulatorProxy : proxy
+  ExecutionManager -up-|> IExecutionManager
+  ExecutionManager o-- SimulatorProxy : interactor
+  QualityManager -up-|> IQualityManager
+  QualityManager o-- SimulatorProxy : proxy
+  ServiceManager -up-|> IServiceManager
+  ServiceManager o-- SimulatorProxy : proxy
+  SimulationManager -up-|> ISimulationManager
+  SimulationManager o-- SimulatorProxy : interactor
+  SimulationManager o-- SystemProfile : systemProfile
+  SimulationManager o-- ArchitectureDescription : archDescription
+  SimulatorProxy o-- IAdministrationManager : adminManager
+  SimulatorProxy o-- ISystemManager : systemManager
+  SimulatorProxy o-- IUserManager : userManager
+  SimulatorProxy o-- ISourceManager : sourceManager
+  SimulatorProxy o-- IAdapterManager : adapterManager
+  SimulatorProxy o-- IEventManager : eventManager
+  SimulatorProxy o-- IServiceManager : serviceManager
+  SimulatorProxy o-- IComponentManager : componentManager
+  SimulatorProxy o-- ISimulationManager : simulationManager
+  SimulatorProxy o-- IExecutionManager : executionManager
+  SimulatorProxy o-- IQualityManager : qualityManager
+  SourceManager -up-|> ISourceManager
+  SourceManager o-- SimulatorProxy : interactor
+  SystemManager -up-|> ISystemManager
+  SystemManager o-- SimulatorProxy : interactor
+  UserManager -up-|> IUserManager
+  UserManager o-- SimulatorProxy : interactor
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

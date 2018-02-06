@@ -1,0 +1,367 @@
+@startuml
+
+title __MODEL's Class Diagram__\n
+
+  package  {
+    package simulator.model {
+      abstract class AbstractComponent {
+          + AbstractComponent()
+          {abstract} + getName()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class Adapter {
+          + Adapter()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      enum ProfileEnum {
+        PROFILE_TYPE_EVENT_SOURCE
+        PROFILE_TYPE_EVENT_SERVICE
+        PROFILE_TYPE_EVENT
+        PROFILE_TYPE_ADAPTER
+        PROFILE_TYPE_COMPONENT
+        PROFILE_TYPE_SYSTEM
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class AlarmAlertComponent {
+          + AlarmAlertComponent()
+          + getName()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class ArchitectureDescription {
+          - AD_ID : int
+          + ArchitectureDescription()
+          + ArchitectureDescription()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class Component {
+          - complexity : int
+          - complexityRange : int
+          - memoryRange : int
+          - memoryResource : int
+          + Component()
+          + getComplexity()
+          + Component()
+          + setComplexity()
+          + getComplexityRange()
+          + setComplexityRange()
+          + getMemoryRange()
+          + setMemoryRange()
+          + getMemoryResource()
+          + setMemoryResource()
+          + setComponent()
+          + getComponent()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      enum ProfileEnum {
+        PROFILE_TYPE_EVENT_SOURCE
+        PROFILE_TYPE_EVENT_SERVICE
+        PROFILE_TYPE_EVENT
+        PROFILE_TYPE_ADAPTER
+        PROFILE_TYPE_COMPONENT
+        PROFILE_TYPE_SYSTEM
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class Event {
+          + Event()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      enum ProfileEnum {
+        PROFILE_TYPE_EVENT_SOURCE
+        PROFILE_TYPE_EVENT_SERVICE
+        PROFILE_TYPE_EVENT
+        PROFILE_TYPE_ADAPTER
+        PROFILE_TYPE_COMPONENT
+        PROFILE_TYPE_SYSTEM
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      interface IComponentAction {
+          {abstract} + getName()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class MakeEmergencyCallComponent {
+          + MakeEmergencyCallComponent()
+          + getName()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class Profile {
+          # profileName : String
+          # profileId : int
+          + getProfileName()
+          + setProfileName()
+          + getProfileId()
+          + setProfileId()
+          + getType()
+          + setType()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      enum ProfileEnum {
+        PROFILE_TYPE_EVENT_SOURCE
+        PROFILE_TYPE_EVENT_SERVICE
+        PROFILE_TYPE_EVENT
+        PROFILE_TYPE_ADAPTER
+        PROFILE_TYPE_COMPONENT
+        PROFILE_TYPE_SYSTEM
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class SendTextAlertComponent {
+          + SendTextAlertComponent()
+          + getName()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class Service {
+          - components : ArrayList<Component>
+          - eventId : int
+          + Service()
+          + getComponents()
+          + addComponent()
+          + getEventId()
+          + setEventId()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      enum ProfileEnum {
+        PROFILE_TYPE_EVENT_SOURCE
+        PROFILE_TYPE_EVENT_SERVICE
+        PROFILE_TYPE_EVENT
+        PROFILE_TYPE_ADAPTER
+        PROFILE_TYPE_COMPONENT
+        PROFILE_TYPE_SYSTEM
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class SimulationResult {
+          + SimulationResult()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class SimulationSession {
+          - simulationResult : ArrayList<SimulationResult>
+          - sessionCount : int
+          + SimulationSession()
+          + storeSimulationResult()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class SingleComponent {
+          + getName()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class Source {
+          - rangeFrequency : int
+          - regularityOfFrequency : int
+          - priority : int
+          - valueAvgFreq : int
+          - valueRange : int
+          + Source()
+          + Source()
+          + getRangeFrequency()
+          + setRangeFrequency()
+          + getRegularityOfFrequency()
+          + setRegularityOfFrequency()
+          + getPriority()
+          + setPriority()
+          + getValueAvgFreq()
+          + setValueAvgFreq()
+          + getValueRange()
+          + setValueRange()
+          + getValueType()
+          + setValueType()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      enum SourceEnum {
+        SOURCE_TYPE_SENSOR
+        SOURCE_TYPE_USER
+        SOURCE_TYPE_EXTERNAL
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      enum ProfileEnum {
+        PROFILE_TYPE_EVENT_SOURCE
+        PROFILE_TYPE_EVENT_SERVICE
+        PROFILE_TYPE_EVENT
+        PROFILE_TYPE_ADAPTER
+        PROFILE_TYPE_COMPONENT
+        PROFILE_TYPE_SYSTEM
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class SystemProfile {
+          - name : String
+          - id : int
+          + getName()
+          + setName()
+          + getId()
+          + setId()
+          + SystemProfile()
+          + SystemProfile()
+      }
+    }
+  }
+  
+
+  package  {
+    package simulator.model {
+      class UserProfile {
+          - userId : String
+          - userName : String
+          - userEmail : String
+          - contactNumber : String
+          - userPassword : String
+          - simulationSession : ArrayList<SimulationSession>
+          + UserProfile()
+          + UserProfile()
+          + setUserId()
+          + getUserId()
+          + setUserName()
+          + getUserName()
+          + setUserEmail()
+          + getUserEmail()
+          + setContactNumber()
+          + getContactNumber()
+          + setUserPassword()
+          + getUserPassword()
+      }
+    }
+  }
+  
+
+  AbstractComponent -up-|> IComponentAction
+  AbstractComponent o-- IComponentAction : action
+  Adapter -up-|> Profile
+  Adapter +-down- ProfileEnum
+  AlarmAlertComponent -up-|> AbstractComponent
+  ArchitectureDescription o-- Source : source
+  ArchitectureDescription o-- Adapter : adapter
+  ArchitectureDescription o-- Event : event
+  ArchitectureDescription o-- Service : service
+  ArchitectureDescription o-- Component : component
+  Component -up-|> Profile
+  Component o-- IComponentAction : componentAction
+  Component +-down- ProfileEnum
+  Event -up-|> Profile
+  Event +-down- ProfileEnum
+  MakeEmergencyCallComponent -up-|> AbstractComponent
+  Profile o-- ProfileEnum : type
+  Profile +-down- ProfileEnum
+  SendTextAlertComponent -up-|> AbstractComponent
+  Service -up-|> Profile
+  Service +-down- ProfileEnum
+  SingleComponent -up-|> IComponentAction
+  Source -up-|> Profile
+  Source o-- SourceEnum : valueType
+  Source +-down- SourceEnum
+  Source +-down- ProfileEnum
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
