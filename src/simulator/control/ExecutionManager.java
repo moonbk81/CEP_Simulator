@@ -38,8 +38,6 @@ public class ExecutionManager implements IExecutionManager {
         createNewThread();
         runThreadAndExecuteService();
         estimateEventServiceSimulation();
-
-
     }
 
     private void runThreadAndExecuteService() {
@@ -51,6 +49,8 @@ public class ExecutionManager implements IExecutionManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        shutdownExecutionThreaad();
     }
 
     private void shutdownExecutionThreaad() {
@@ -89,6 +89,10 @@ public class ExecutionManager implements IExecutionManager {
         this.profile = profile;
     }
 
+    private void executeEventService() {
+        System.out.println("Execute event service0");
+    }
+
     class ExecuteRunnable implements Runnable {
         @Override
         public void run() {
@@ -97,4 +101,6 @@ public class ExecutionManager implements IExecutionManager {
             estimateEventServiceSimulation();
         }
     }
+
+
 }

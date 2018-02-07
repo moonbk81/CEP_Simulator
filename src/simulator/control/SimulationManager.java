@@ -2,12 +2,10 @@ package simulator.control;
 
 import simulator.control.interfaces.ISimulationManager;
 import simulator.model.ArchitectureDescription;
-import simulator.model.Component;
-import simulator.model.Service;
 import simulator.model.SystemProfile;
 
 public class SimulationManager implements ISimulationManager {
-	private SimulatorProxy interactor = null;
+	private SimulatorProxy proxy;
 	private SystemProfile systemProfile;
 	private ArchitectureDescription archDescription;
 
@@ -16,31 +14,29 @@ public class SimulationManager implements ISimulationManager {
     }
     
 
-    public SimulationManager(SimulatorProxy interactor) {
+    public SimulationManager(SimulatorProxy proxy) {
 		super();
-		this.interactor = interactor;
+		this.proxy = proxy;
 	}
 
 
 	public void chooseArchitectureDescription() {
-    	System.out.println("choose Architecture Description!");
-    	Service service = interactor.getServiceManager().retrieveProfile(0);
-    	System.out.println("Retrieved service event id " + service.getEventId() + "component " + 
-    							service.getComponents(0).getComponent().getName());
-    	Component component = interactor.getComponentManager().retrieveProfile(0);
-    	System.out.println("Retrieve component name: " + component.getComponent().getName());
-    	archDescription = new ArchitectureDescription();
+    	archDescription = new ArchitectureDescription(proxy.getSourceManager().retrieveProfile(0),
+													  proxy.getAdapterManager().retrieveProfile(0),
+                                                      proxy.getEventManager().retrieveProfile(0),
+                                                      proxy.getServiceManager().retrieveProfile(0),
+                                                      proxy.getComponentManager().retrieveProfile(0));
     }
 
     public void chooseSystemProfile() {
     	System.out.println("choose SystemProfile");
-    	systemProfile = interactor.getSystemManager().retrieveProfile(0);
+    	systemProfile = proxy.getSystemManager().retrieveProfile(0);
     }
 
     public void startSimulation() {
-    	interactor.getExecutionManager().designSimulationMethod();
-    	interactor.getExecutionManager().executeEventService(archDescription, systemProfile);
-        interactor.getQualityManager().startMonitoringService();
+    	proxy.getExecutionManager().designSimulationMethod();
+    	proxy.getExecutionManager().executeEventService(archDescription, systemProfile);
+        proxy.getQualityManager().startMonitoringService();
     }
 
     public void stopSimulation() {
