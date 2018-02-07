@@ -208,4 +208,8 @@ public class SimulatorProxy {
         service.addComponent(componentManager.retrieveProfile(2));
 		serviceManager.registerProfile(service);
     }
+
+    public void executeService() {
+		simulationManager.startSimulation();
+	}
 }

@@ -39,6 +39,9 @@ public class SimulatorCmdUI {
             if (command == 0) {
                 quit = true;
                 continue;
+            } else if (command == 15)  {
+                proxy.executeService();
+                continue;
             }
             if (command < 8) {
                 view.registerCommand();
