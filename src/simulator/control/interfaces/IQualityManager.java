@@ -7,6 +7,7 @@ public interface IQualityManager {
 	void stopMonitoringService();
 	void pauseMonitoringService();
 	void retrieveServiceQuality();
-	SimulationResult getResultForUi();
+	SimulationResult consistResultByVisualLevel();
+	SimulationResult consistResultByUserPreference();
 	void setResultLevel(int level);
 }

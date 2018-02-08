@@ -59,6 +59,7 @@ public class ExecutionManager implements IExecutionManager {
 
     private void estimateEventServiceSimulation() {
     	System.out.println("Estimate computing load, memory usage");
+    	// Notify ad and profile to quality manager
     }
 
     private void createNewThread() {

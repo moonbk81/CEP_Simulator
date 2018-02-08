@@ -26,10 +26,11 @@ public class QualityManager implements IQualityManager {
 
 	public void retrieveServiceQuality() {
 		System.out.println("Retrieve monitoring event service");
+
 	}
 
     @Override
-    public SimulationResult getResultForUi() {
+    public SimulationResult consistResultByVisualLevel() {
         ResultBuilder resultBuilder = new ResultBuilder();
 
         switch (getLevel()) {
