@@ -210,8 +210,8 @@ public class SimulatorProxy {
     }
 
     public void executeService() {
-		simulationManager.chooseArchitectureDescription();
-		simulationManager.chooseSystemProfile();
+		simulationManager.chooseArchitectureDescription(0);
+		simulationManager.chooseSystemProfile(0);
 		simulationManager.startSimulation();
 	}
 }

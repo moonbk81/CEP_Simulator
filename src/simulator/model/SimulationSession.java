@@ -2,7 +2,7 @@ package simulator.model;
 import java.util.*;
 
 public class SimulationSession {
-	private ArrayList<SimulationResult> simulationResult = new ArrayList<SimulationResult>();
+	private ArrayList<SimulationResult> simulationResult = new ArrayList<>();
 	private int sessionCount = 0;
 
 	public SimulationSession() {

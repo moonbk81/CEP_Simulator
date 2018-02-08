@@ -1,8 +1,8 @@
 package simulator.control.interfaces;
 public interface ISimulationManager {
-    void chooseArchitectureDescription();
+    void chooseArchitectureDescription(int index);
 
-    void chooseSystemProfile();
+    void chooseSystemProfile(int index);
 
     void startSimulation();
 

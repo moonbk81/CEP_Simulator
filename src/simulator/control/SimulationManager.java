@@ -20,22 +20,22 @@ public class SimulationManager implements ISimulationManager {
 	}
 
 
-	public void chooseArchitectureDescription() {
-    	archDescription = new ArchitectureDescription(proxy.getSourceManager().retrieveProfile(0),
-													  proxy.getAdapterManager().retrieveProfile(0),
-                                                      proxy.getEventManager().retrieveProfile(0),
-                                                      proxy.getServiceManager().retrieveProfile(0),
-                                                      proxy.getComponentManager().retrieveProfile(0));
+	public void chooseArchitectureDescription(int index) {
+    	archDescription = new ArchitectureDescription(proxy.getSourceManager().retrieveProfile(index),
+													  proxy.getAdapterManager().retrieveProfile(index),
+                                                      proxy.getEventManager().retrieveProfile(index),
+                                                      proxy.getServiceManager().retrieveProfile(index),
+                                                      proxy.getComponentManager().retrieveProfile(index));
     }
 
-    public void chooseSystemProfile() {
-    	System.out.println("choose SystemProfile");
-    	systemProfile = proxy.getSystemManager().retrieveProfile(0);
+    public void chooseSystemProfile(int index) {
+        System.out.println("choose SystemProfile");
+        systemProfile = proxy.getSystemManager().retrieveProfile(index);
     }
 
     public void startSimulation() {
-    	proxy.getExecutionManager().designSimulationMethod();
-    	proxy.getExecutionManager().executeEventService(archDescription, systemProfile);
+        proxy.getExecutionManager().designSimulationMethod();
+        proxy.getExecutionManager().executeEventService(archDescription, systemProfile);
         proxy.getQualityManager().startMonitoringService();
     }
 
