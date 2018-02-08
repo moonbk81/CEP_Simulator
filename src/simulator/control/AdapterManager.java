@@ -7,16 +7,16 @@ import simulator.model.Adapter;
 public class AdapterManager implements IAdapterManager {
 	private ArrayList<Adapter> adapterProfiles;
 	SimulatorProxy proxy;
-	
-	public AdapterManager(SimulatorProxy si) {
-		adapterProfiles = new ArrayList<Adapter>();
-		this.proxy = si;
-	}
-	
-	public void registerProfile(Adapter profile) {
-		if (adapterProfiles != null) {
-			adapterProfiles.add(profile);
-		}
+
+    public AdapterManager(SimulatorProxy si) {
+        adapterProfiles = new ArrayList<>();
+        this.proxy = si;
+    }
+
+    public void registerProfile(Adapter profile) {
+        if (adapterProfiles != null) {
+            adapterProfiles.add(profile);
+        }
 	}
 
 	public void deleteProfile(int index) {

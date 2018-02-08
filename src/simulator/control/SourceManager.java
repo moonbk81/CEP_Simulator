@@ -3,14 +3,15 @@ import java.util.*;
 
 import simulator.control.interfaces.ISourceManager;
 import simulator.model.Source;
+import simulator.model.Source.SourceEnum;
 
 public class SourceManager implements ISourceManager {
-	private ArrayList<Source> sourceProfiles = null;
-	private SimulatorProxy interactor = null;
+	private ArrayList<Source> sourceProfiles;
+    private SimulatorProxy proxy;
 	
 	public SourceManager(SimulatorProxy si) {
-		sourceProfiles = new ArrayList<Source>();
-		this.interactor = si;
+		sourceProfiles = new ArrayList<>();
+		this.proxy = si;
 	}
 	
 	public void registerProfile(Source profile) {
@@ -38,8 +39,8 @@ public class SourceManager implements ISourceManager {
 
 	@Override
 	public void registerProfile(int rangeFreq, int regularity, int priority, int valueRange, int valueAvgFreq, int valueType) {
-		Source.SourceEnum convertedSourceType = Source.convertIntegerToSourceEnum(valueType);
-		Source source = new Source(rangeFreq,regularity, priority, valueRange, valueAvgFreq, convertedSourceType);
+		SourceEnum convertedSourceType = Source.convertIntegerToSourceEnum(valueType);
+		Source source = new Source(rangeFreq, regularity, priority, valueRange, valueAvgFreq, convertedSourceType);
 		registerProfile(source);
 	}
 
