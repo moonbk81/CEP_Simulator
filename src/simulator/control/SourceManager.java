@@ -48,4 +48,26 @@ public class SourceManager implements ISourceManager {
 	public List<Source> getSourceProfiles() {
 		return sourceProfiles;
 	}
+
+	class GenerateEventSourceRunnable implements Runnable {
+        private Source profile;
+
+        public GenerateEventSourceRunnable(Source profile) {
+            this.profile = profile;
+        }
+
+        @Override
+        public void run() {
+            try {
+                // generate source after frequency
+                Thread.sleep(getProfile().getRangeFrequency());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public Source getProfile() {
+            return profile;
+        }
+    }
 }

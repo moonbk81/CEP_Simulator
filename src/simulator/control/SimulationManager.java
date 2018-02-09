@@ -5,9 +5,18 @@ import simulator.model.ArchitectureDescription;
 import simulator.model.SystemProfile;
 
 public class SimulationManager implements ISimulationManager {
-	private SimulatorProxy proxy;
+    public enum SIMULATION_STATE {
+        SIMULATIOIN_STATE_STOP,
+        SIMULATION_STATE_START,
+        SIMULATION_STATE_PAUSE,
+        SIMULATION_STATE_RESULT,
+        SIMULATION_STATE_UNKNOWN
+    };
+
+    private SimulatorProxy proxy;
 	private SystemProfile systemProfile;
 	private ArchitectureDescription archDescription;
+	private SIMULATION_STATE state;
 
     public SimulationManager() {
     	System.out.println("SimulationManager!");
@@ -36,18 +45,27 @@ public class SimulationManager implements ISimulationManager {
     public void startSimulation() {
         proxy.getExecutionManager().designSimulationMethod();
         proxy.getExecutionManager().executeEventService(archDescription, systemProfile);
+        setState(SIMULATION_STATE.SIMULATION_STATE_START);
         proxy.getQualityManager().startMonitoringService();
     }
 
     public void stopSimulation() {
-
+        setState(SIMULATION_STATE.SIMULATIOIN_STATE_STOP);
     }
 
     public void pauseSimulation() {
-
+        setState(SIMULATION_STATE.SIMULATION_STATE_PAUSE);
     }
 
     public void reportSimulation() {
+        setState(SIMULATION_STATE.SIMULATION_STATE_RESULT);
+    }
 
+    public SIMULATION_STATE getState() {
+        return state;
+    }
+
+    public void setState(SIMULATION_STATE state) {
+        this.state = state;
     }
 }

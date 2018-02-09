@@ -10,7 +10,7 @@ public class Source extends Profile {
         SOURCE_TYPE_EXTERNAL,
 		SOURCE_TYPE_UNKNOWN
     }
-	private int rangeFrequency;
+	private long rangeFrequency;
 	private int regularityOfFrequency;
 	private int priority;
 	private int valueAvgFreq;
@@ -32,11 +32,11 @@ public class Source extends Profile {
 		this.valueType = valueType;
 	}
 
-	public int getRangeFrequency() {
+	public long getRangeFrequency() {
 		return rangeFrequency;
 	}
 
-	public void setRangeFrequency(int rangeFrequency) {
+	public void setRangeFrequency(long rangeFrequency) {
 		this.rangeFrequency = rangeFrequency;
 	}
 

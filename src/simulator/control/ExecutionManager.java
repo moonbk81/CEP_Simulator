@@ -8,6 +8,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
+import static simulator.control.SimulationManager.SIMULATION_STATE.SIMULATION_STATE_START;
+
 /**
  * 
  */
@@ -42,7 +44,7 @@ public class ExecutionManager implements IExecutionManager {
 
     private void runThreadAndExecuteService() {
         try {
-            for (int i =  0; i < 100; i++) {
+            while (proxy.getSimulationManager().getState() == SIMULATION_STATE_START) {
                 Runnable r = new ExecuteRunnable();
                 executorService.execute(r);
             }

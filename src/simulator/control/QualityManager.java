@@ -1,11 +1,20 @@
 package simulator.control;
 
 import simulator.control.interfaces.IQualityManager;
+import simulator.model.ArchitectureDescription;
 import simulator.model.SimulationResult;
+import simulator.model.SystemProfile;
 
 public class QualityManager implements IQualityManager {
+    private final int RESULT_LEVEL1     = 1;
+    private final int RESULT_LEVEL2      = 2;
+    private final int RESULT_LEVEL_ALL              = 3;
+
     private SimulatorProxy proxy;
     private int level = 0;
+    private ArchitectureDescription resultAd;
+    private SystemProfile  resultSysProfile;
+
 
     public QualityManager(SimulatorProxy si) {
     	System.out.println("Quality Manager");
@@ -34,17 +43,17 @@ public class QualityManager implements IQualityManager {
         ResultBuilder resultBuilder = new ResultBuilder();
 
         switch (getLevel()) {
-            case 1:
+            case RESULT_LEVEL1:
                 return resultBuilder
                             .setArchitectureDescription(ad)
                             .setSystemProfile(profile)
                             .build();
-            case 2:
+            case RESULT_LEVEL2:
                 return resultBuilder
                             .setTotalComplexity(compexity)
                             .setTotalMemoryConsumption(memory)
                             .build();
-            case 3:
+            case RESULT_LEVEL_ALL:
                 return resultBuilder
                             .setArchitectureDescription(ad)
                             .setSystemProfile(profile)
