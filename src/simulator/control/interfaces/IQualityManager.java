@@ -10,4 +10,9 @@ public interface IQualityManager {
 	SimulationResult consistResultByVisualLevel();
 	SimulationResult consistResultByUserPreference();
 	void setResultLevel(int level);
+
+	// For observer, it is subject interface
+	public void addMonitor(IMonitor monitor);
+	public void deleteMonitor(IMonitor monitor);
+	public void notifyMonitor();
 }
