@@ -2,18 +2,18 @@ package simulator.control;
 import java.util.*;
 
 import simulator.control.interfaces.IEventManager;
-import simulator.model.Event;
+import simulator.model.EventProfile;
 
 public class EventManager implements IEventManager {
-	private ArrayList<Event> eventProfiles;
+	private ArrayList<EventProfile> eventProfiles;
 	private SimulatorProxy proxy;
 	
 	public EventManager(SimulatorProxy si) {
-		eventProfiles = new ArrayList<Event>();
+		eventProfiles = new ArrayList<EventProfile>();
 		this.proxy = si;
 	}
 
-	public void registerProfile(Event profile) {
+	public void registerProfile(EventProfile profile) {
 		if (eventProfiles != null) {
 			eventProfiles.add(profile);
 		}
@@ -26,22 +26,22 @@ public class EventManager implements IEventManager {
 		}
 	}
 
-	public void modifyProfile(int index, Event profile) {
+	public void modifyProfile(int index, EventProfile profile) {
 		if (eventProfiles != null && !eventProfiles.isEmpty()) {
 			eventProfiles.set(index, profile);
 		}
 	}
 
-	public Event retrieveProfile(int index) {
-		Event event = null;
+	public EventProfile retrieveProfile(int index) {
+		EventProfile eventProfile = null;
 		if (eventProfiles != null && !eventProfiles.isEmpty()) {
-			event = eventProfiles.get(index);
+			eventProfile = eventProfiles.get(index);
 		}
-		return event;
+		return eventProfile;
 	}
 
 	@Override
-	public List<Event> getEventProfiles() {
+	public List<EventProfile> getEventProfiles() {
 		return eventProfiles;
 	}
 }

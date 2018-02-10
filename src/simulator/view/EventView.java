@@ -1,7 +1,7 @@
 package simulator.view;
 
 import simulator.control.SimulatorProxy;
-import simulator.model.Event;
+import simulator.model.EventProfile;
 
 import java.util.List;
 
@@ -18,12 +18,12 @@ public class EventView extends ProfileView {
     @Override
     public String retrieveCommand() {
         StringBuilder sb = new StringBuilder();
-        List<Event> events = getProxy().getEventManager().getEventProfiles();
+        List<EventProfile> eventProfiles = getProxy().getEventManager().getEventProfiles();
 
-        for (Event event : events) {
+        for (EventProfile eventProfile : eventProfiles) {
             sb.append(
-                    "Event id: " + event.getEventId() +
-                            "\tEvent condition: " + event.isEventCondition() +
+                    "EventProfile id: " + eventProfile.getEventId() +
+                            "\tEventProfile condition: " + eventProfile.isEventCondition() +
                             "\r\n"
             );
         }

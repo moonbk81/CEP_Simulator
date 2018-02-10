@@ -2,14 +2,12 @@ package simulator.control;
 import simulator.control.interfaces.*;
 import simulator.model.*;
 
-import java.util.List;
-
-import static simulator.model.Event.EVENT_ID_FIRE_EVENT;
-import static simulator.model.Event.EVENT_ID_USER_EVENT;
-import static simulator.model.Event.EVENT_ID_WINDOWN_EVENT;
-import static simulator.model.Source.SourceEnum.SOURCE_TYPE_FIRE_ALARM;
-import static simulator.model.Source.SourceEnum.SOURCE_TYPE_USER;
-import static simulator.model.Source.SourceEnum.SOURCE_TYPE_WINDOW_ALARM;
+import static simulator.model.EventProfile.EVENT_ID_FIRE_EVENT;
+import static simulator.model.EventProfile.EVENT_ID_USER_EVENT;
+import static simulator.model.EventProfile.EVENT_ID_WINDOWN_EVENT;
+import static simulator.model.SourceProfile.SourceEnum.SOURCE_TYPE_FIRE_ALARM;
+import static simulator.model.SourceProfile.SourceEnum.SOURCE_TYPE_USER;
+import static simulator.model.SourceProfile.SourceEnum.SOURCE_TYPE_WINDOW_ALARM;
 
 
 public class SimulatorProxy {
@@ -145,27 +143,27 @@ public class SimulatorProxy {
         systemManager.registerProfile(sysProfile);
 
         // generate source profiles
-        Source srcProfile = new Source(10, 1, 5, 30, 10, SOURCE_TYPE_FIRE_ALARM);
+        SourceProfile srcProfile = new SourceProfile(10, 1, 5, 30, 10, SOURCE_TYPE_FIRE_ALARM);
         sourceManager.registerProfile(srcProfile);
-        srcProfile = new Source(20, 1, 5, 100, 10, SOURCE_TYPE_WINDOW_ALARM);
+        srcProfile = new SourceProfile(20, 1, 5, 100, 10, SOURCE_TYPE_WINDOW_ALARM);
         sourceManager.registerProfile(srcProfile);
-        srcProfile = new Source(15, 0, 9, 100, 10, SOURCE_TYPE_USER);
+        srcProfile = new SourceProfile(15, 0, 9, 100, 10, SOURCE_TYPE_USER);
         sourceManager.registerProfile(srcProfile);
 
         // generate adapter profiles
-        Adapter adapterProfile = new Adapter(SOURCE_TYPE_FIRE_ALARM, 150, 256);
+        AdapterProfile adapterProfile = new AdapterProfile(SOURCE_TYPE_FIRE_ALARM, 150, 256);
         adapterManager.registerProfile(adapterProfile);
-        adapterProfile = new Adapter(SOURCE_TYPE_WINDOW_ALARM, 120, 128);
+        adapterProfile = new AdapterProfile(SOURCE_TYPE_WINDOW_ALARM, 120, 128);
         adapterManager.registerProfile(adapterProfile);
-        adapterProfile = new Adapter(SOURCE_TYPE_USER, 180, 512);
+        adapterProfile = new AdapterProfile(SOURCE_TYPE_USER, 180, 512);
         adapterManager.registerProfile(adapterProfile);
 
         // generate event profiles
-        Event eventProfile = new Event(EVENT_ID_FIRE_EVENT, false);
+        EventProfile eventProfile = new EventProfile(EVENT_ID_FIRE_EVENT, false);
         eventManager.registerProfile(eventProfile);
-        eventProfile = new Event(EVENT_ID_WINDOWN_EVENT, false);
+        eventProfile = new EventProfile(EVENT_ID_WINDOWN_EVENT, false);
         eventManager.registerProfile(eventProfile);
-        eventProfile = new Event(EVENT_ID_USER_EVENT, false);
+        eventProfile = new EventProfile(EVENT_ID_USER_EVENT, false);
         eventManager.registerProfile(eventProfile);
 
         // generate component profiles
@@ -173,40 +171,40 @@ public class SimulatorProxy {
                 new MakeEmergencyCallComponent(
                         new SingleComponent()));
 
-        Component component = new Component(120, 10, 10, 200, componentAction);
+        ComponentProfile component = new ComponentProfile(120, 10, 10, 200, componentAction);
         componentManager.registerProfile(component);
 
         componentAction = new SendTextAlertComponent(
                 new MakeEmergencyCallComponent(
                         new AlarmAlertComponent(
                                 new SingleComponent())));
-        component = new Component(100, 20, 10, 180, componentAction);
+        component = new ComponentProfile(100, 20, 10, 180, componentAction);
         componentManager.registerProfile(component);
 
         componentAction = new AlarmAlertComponent(
                 new SingleComponent());
-        component = new Component(50, 10, 15, 150, componentAction);
+        component = new ComponentProfile(50, 10, 15, 150, componentAction);
         componentManager.registerProfile(component);
 
-        // generate service profiles
-        Service service = new Service();
-        service.setEventId(EVENT_ID_FIRE_EVENT);
-        service.addComponent(componentManager.retrieveProfile(0));
-        service.addComponent(componentManager.retrieveProfile(2));
-        serviceManager.registerProfile(service);
+        // generate serviceProfile profiles
+        ServiceProfile serviceProfile = new ServiceProfile();
+        serviceProfile.setEventId(EVENT_ID_FIRE_EVENT);
+        serviceProfile.addComponent(componentManager.retrieveProfile(0));
+        serviceProfile.addComponent(componentManager.retrieveProfile(2));
+        serviceManager.registerProfile(serviceProfile);
 
-        service = new Service();
-        service.setEventId(EVENT_ID_WINDOWN_EVENT);
-        service.addComponent(componentManager.retrieveProfile(1));
-        service.addComponent(componentManager.retrieveProfile(2));
-		serviceManager.registerProfile(service);
+        serviceProfile = new ServiceProfile();
+        serviceProfile.setEventId(EVENT_ID_WINDOWN_EVENT);
+        serviceProfile.addComponent(componentManager.retrieveProfile(1));
+        serviceProfile.addComponent(componentManager.retrieveProfile(2));
+		serviceManager.registerProfile(serviceProfile);
 
-        service = new Service();
-        service.setEventId(EVENT_ID_USER_EVENT);
-        service.addComponent(componentManager.retrieveProfile(0));
-        service.addComponent(componentManager.retrieveProfile(1));
-        service.addComponent(componentManager.retrieveProfile(2));
-		serviceManager.registerProfile(service);
+        serviceProfile = new ServiceProfile();
+        serviceProfile.setEventId(EVENT_ID_USER_EVENT);
+        serviceProfile.addComponent(componentManager.retrieveProfile(0));
+        serviceProfile.addComponent(componentManager.retrieveProfile(1));
+        serviceProfile.addComponent(componentManager.retrieveProfile(2));
+		serviceManager.registerProfile(serviceProfile);
     }
 
     public void executeService() {

@@ -1,6 +1,6 @@
 package simulator.model;
 
-public class Event extends Profile {
+public class EventProfile extends Profile {
     public static final int EVENT_ID_FIRE_EVENT     = 1;
     public static final int EVENT_ID_WINDOWN_EVENT  = 2;
     public static final int EVENT_ID_MOVE_EVENT     = 3;
@@ -10,10 +10,10 @@ public class Event extends Profile {
 
     private int eventId;
     private boolean eventCondition; // it will be decided by source value
-    public Event() {
+    public EventProfile() {
     }
 
-    public Event(int eventId, boolean eventCondition) {
+    public EventProfile(int eventId, boolean eventCondition) {
         this.eventId = eventId;
         this.eventCondition = eventCondition;
     }

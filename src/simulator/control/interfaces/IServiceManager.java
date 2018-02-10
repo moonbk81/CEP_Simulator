@@ -1,13 +1,13 @@
 package simulator.control.interfaces;
-import simulator.model.Service;
+import simulator.model.ServiceProfile;
 
 import java.util.List;
 
 public interface IServiceManager {
-	void registerProfile(Service profile);
+	void registerProfile(ServiceProfile profile);
 	void deleteProfile(int index);
-	void modifyProfile(int index, Service profile);
-	Service retrieveProfile(int index);
+	void modifyProfile(int index, ServiceProfile profile);
+	ServiceProfile retrieveProfile(int index);
 
-    List<Service> getServiceProfiles();
+    List<ServiceProfile> getServiceProfiles();
 }

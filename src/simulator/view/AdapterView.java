@@ -1,7 +1,7 @@
 package simulator.view;
 
 import simulator.control.SimulatorProxy;
-import simulator.model.Adapter;
+import simulator.model.AdapterProfile;
 
 import java.util.List;
 
@@ -18,13 +18,13 @@ public class AdapterView extends ProfileView {
     @Override
     public String retrieveCommand() {
         StringBuilder sb = new StringBuilder();
-        List<Adapter> adapters = getProxy().getAdapterManager().getAdapterProfiles();
+        List<AdapterProfile> adapterProfiles = getProxy().getAdapterManager().getAdapterProfiles();
 
-        for (Adapter adapter : adapters) {
+        for (AdapterProfile adapterProfile : adapterProfiles) {
             sb.append(
-                    "Adapter complexity: " + adapter.getComplexity() +
-                            "\tmemory consumption: " + adapter.getMemoryConsumption() +
-                            "\tadapter source type: " + adapter.getSourceType() +
+                    "AdapterProfile complexity: " + adapterProfile.getComplexity() +
+                            "\tmemory consumption: " + adapterProfile.getMemoryConsumption() +
+                            "\tadapterProfile source type: " + adapterProfile.getSourceType() +
                             "\r\n"
             );
         }

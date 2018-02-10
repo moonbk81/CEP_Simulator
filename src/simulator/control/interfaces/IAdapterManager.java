@@ -1,13 +1,13 @@
 package simulator.control.interfaces;
-import simulator.model.Adapter;
+import simulator.model.AdapterProfile;
 
 import java.util.List;
 
 public interface IAdapterManager {
-	void registerProfile(Adapter profile);
+	void registerProfile(AdapterProfile profile);
 	void deleteProfile(int index);
-	void modifyProfile(int index, Adapter profile);
-	Adapter retrieveProfile(int index);
+	void modifyProfile(int index, AdapterProfile profile);
+	AdapterProfile retrieveProfile(int index);
 
-    List<Adapter> getAdapterProfiles();
+    List<AdapterProfile> getAdapterProfiles();
 }

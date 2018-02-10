@@ -1,13 +1,13 @@
 package simulator.control.interfaces;
-import simulator.model.Event;
+import simulator.model.EventProfile;
 
 import java.util.List;
 
 public interface IEventManager {
-	void registerProfile(Event profile);
+	void registerProfile(EventProfile profile);
 	void deleteProfile(int index);
-	void modifyProfile(int index, Event profile);
-	Event retrieveProfile(int index);
+	void modifyProfile(int index, EventProfile profile);
+	EventProfile retrieveProfile(int index);
 
-    List<Event> getEventProfiles();
+    List<EventProfile> getEventProfiles();
 }

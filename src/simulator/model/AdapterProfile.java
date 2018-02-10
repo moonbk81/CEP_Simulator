@@ -1,16 +1,16 @@
 package simulator.model;
 
-import simulator.model.Source.SourceEnum;
+import simulator.model.SourceProfile.SourceEnum;
 
-public class Adapter extends Profile {
+public class AdapterProfile extends Profile {
     private SourceEnum sourceType;
     private int complexity;
     private int memoryConsumption;
 
-    public Adapter() {
+    public AdapterProfile() {
     }
 
-    public Adapter(SourceEnum sourceType, int complexity, int memoryConsumption) {
+    public AdapterProfile(SourceEnum sourceType, int complexity, int memoryConsumption) {
         this.sourceType = sourceType;
         this.complexity = complexity;
         this.memoryConsumption = memoryConsumption;
@@ -55,7 +55,7 @@ public class Adapter extends Profile {
 
     public class SingleAdapter implements IAdapter {
         public String getName() {
-            return "Adapter";
+            return "AdapterProfile";
         }
     }
 

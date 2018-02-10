@@ -2,28 +2,28 @@ package simulator.model;
 
 import java.util.*;
 
-public class Service extends Profile {
+public class ServiceProfile extends Profile {
 	private int eventId;
-	private ArrayList<Component> components;
+	private ArrayList<ComponentProfile> components;
 
-    public Service() {
+    public ServiceProfile() {
     	components = new ArrayList<>();
 		eventId = -1;
     }
 
-	public Service(int eventId, ArrayList<Component> components) {
+	public ServiceProfile(int eventId, ArrayList<ComponentProfile> components) {
 		this.eventId = eventId;
     	this.components = components;
 	}
 
-	public Component getComponents(int componentId) {
+	public ComponentProfile getComponents(int componentId) {
 		if (this.components != null && !this.components.isEmpty()) {
 			return this.components.get(componentId);
 		}
 		return null;
 	}
 
-	public void addComponent(Component components) {
+	public void addComponent(ComponentProfile components) {
 		if (this.components != null) {
 			this.components.add(components);
 		}
@@ -37,7 +37,7 @@ public class Service extends Profile {
 		this.eventId = eventId;
 	}
 
-	public ArrayList<Component> getComponents() {
+	public ArrayList<ComponentProfile> getComponents() {
 		return components;
 	}
 }

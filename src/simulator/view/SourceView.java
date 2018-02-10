@@ -1,7 +1,7 @@
 package simulator.view;
 
 import simulator.control.SimulatorProxy;
-import simulator.model.Source;
+import simulator.model.SourceProfile;
 
 import java.util.List;
 
@@ -38,16 +38,16 @@ public class SourceView extends ProfileView {
     @Override
     public String retrieveCommand() {
         StringBuilder sb = new StringBuilder();
-        List<Source> sources = getProxy().getSourceManager().getSourceProfiles();
+        List<SourceProfile> sourceProfiles = getProxy().getSourceManager().getSourceProfiles();
 
-        for (Source source : sources) {
+        for (SourceProfile sourceProfile : sourceProfiles) {
             sb.append(
-                    "Source value type: " + source.getValueType() +
-                            "\tvalue range: " + source.getValueRange() +
-                            "\tvalue average frequency: " + source.getValueAvgFreq() +
-                            "\tpriority: " + source.getPriority() +
-                            "\tregularity of frequency: " + source.getRegularityOfFrequency() +
-                            "\trange frequency: " + source.getRangeFrequency() +
+                    "SourceProfile value type: " + sourceProfile.getValueType() +
+                            "\tvalue range: " + sourceProfile.getValueRange() +
+                            "\tvalue average frequency: " + sourceProfile.getValueAvgFreq() +
+                            "\tpriority: " + sourceProfile.getPriority() +
+                            "\tregularity of frequency: " + sourceProfile.getRegularityOfFrequency() +
+                            "\trange frequency: " + sourceProfile.getRangeFrequency() +
                             "\r\n"
             );
         }

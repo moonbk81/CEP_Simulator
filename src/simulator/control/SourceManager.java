@@ -2,11 +2,11 @@ package simulator.control;
 import java.util.*;
 
 import simulator.control.interfaces.ISourceManager;
-import simulator.model.Source;
-import simulator.model.Source.SourceEnum;
+import simulator.model.SourceProfile;
+import simulator.model.SourceProfile.SourceEnum;
 
 public class SourceManager implements ISourceManager {
-	private ArrayList<Source> sourceProfiles;
+	private ArrayList<SourceProfile> sourceProfiles;
     private SimulatorProxy proxy;
 	
 	public SourceManager(SimulatorProxy si) {
@@ -14,7 +14,7 @@ public class SourceManager implements ISourceManager {
 		this.proxy = si;
 	}
 	
-	public void registerProfile(Source profile) {
+	public void registerProfile(SourceProfile profile) {
 		if (sourceProfiles != null) {
 			sourceProfiles.add(profile);
 		}
@@ -24,35 +24,35 @@ public class SourceManager implements ISourceManager {
 			sourceProfiles.remove(index);
 		}
 	}
-	public void modifyProfile(int index, Source profile) {
+	public void modifyProfile(int index, SourceProfile profile) {
 		if (sourceProfiles != null && !sourceProfiles.isEmpty()) {
 			sourceProfiles.set(index, profile);
 		}
 	}
-	public Source retrieveProfile(int index) {
-		Source source = null;
+	public SourceProfile retrieveProfile(int index) {
+		SourceProfile sourceProfile = null;
 		if (sourceProfiles != null && !sourceProfiles.isEmpty()) {
-			source = sourceProfiles.get(index);
+			sourceProfile = sourceProfiles.get(index);
 		}
-		return source;
+		return sourceProfile;
 	}
 
 	@Override
 	public void registerProfile(int rangeFreq, int regularity, int priority, int valueRange, int valueAvgFreq, int valueType) {
-		SourceEnum convertedSourceType = Source.convertIntegerToSourceEnum(valueType);
-		Source source = new Source(rangeFreq, regularity, priority, valueRange, valueAvgFreq, convertedSourceType);
-		registerProfile(source);
+		SourceEnum convertedSourceType = SourceProfile.convertIntegerToSourceEnum(valueType);
+		SourceProfile sourceProfile = new SourceProfile(rangeFreq, regularity, priority, valueRange, valueAvgFreq, convertedSourceType);
+		registerProfile(sourceProfile);
 	}
 
 	@Override
-	public List<Source> getSourceProfiles() {
+	public List<SourceProfile> getSourceProfiles() {
 		return sourceProfiles;
 	}
 
 	class GenerateEventSourceRunnable implements Runnable {
-        private Source profile;
+        private SourceProfile profile;
 
-        public GenerateEventSourceRunnable(Source profile) {
+        public GenerateEventSourceRunnable(SourceProfile profile) {
             this.profile = profile;
         }
 
@@ -66,7 +66,7 @@ public class SourceManager implements ISourceManager {
             }
         }
 
-        public Source getProfile() {
+        public SourceProfile getProfile() {
             return profile;
         }
     }

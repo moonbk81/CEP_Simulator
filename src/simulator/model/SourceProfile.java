@@ -1,6 +1,6 @@
 package simulator.model;
 
-public class Source extends Profile {
+public class SourceProfile extends Profile {
 	public static enum SourceEnum {
         SOURCE_TYPE_FIRE_ALARM,
 		SOURCE_TYPE_WINDOW_ALARM,
@@ -17,12 +17,12 @@ public class Source extends Profile {
 	private int valueRange;
 	private SourceEnum valueType;
 	
-    public Source() {
+    public SourceProfile() {
     }
 
-	public Source(int rangeFrequency, int regularityOfFrequency,
-			int priority, int valueAvgFreq, int valueRange,
-			SourceEnum valueType) {
+	public SourceProfile(int rangeFrequency, int regularityOfFrequency,
+                         int priority, int valueAvgFreq, int valueRange,
+                         SourceEnum valueType) {
 		super();
 		this.rangeFrequency = rangeFrequency;
 		this.regularityOfFrequency = regularityOfFrequency;

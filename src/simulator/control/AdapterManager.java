@@ -2,10 +2,10 @@ package simulator.control;
 import java.util.*;
 
 import simulator.control.interfaces.IAdapterManager;
-import simulator.model.Adapter;
+import simulator.model.AdapterProfile;
 
 public class AdapterManager implements IAdapterManager {
-	private ArrayList<Adapter> adapterProfiles;
+	private ArrayList<AdapterProfile> adapterProfiles;
 	SimulatorProxy proxy;
 
     public AdapterManager(SimulatorProxy si) {
@@ -13,7 +13,7 @@ public class AdapterManager implements IAdapterManager {
         this.proxy = si;
     }
 
-    public void registerProfile(Adapter profile) {
+    public void registerProfile(AdapterProfile profile) {
         if (adapterProfiles != null) {
             adapterProfiles.add(profile);
         }
@@ -25,22 +25,22 @@ public class AdapterManager implements IAdapterManager {
 		}
 	}
 
-	public void modifyProfile(int index, Adapter profile) {
+	public void modifyProfile(int index, AdapterProfile profile) {
 		if (adapterProfiles != null && !adapterProfiles.isEmpty()) {
 			adapterProfiles.set(index, profile);
 		}
 	}
 
-	public Adapter retrieveProfile(int index) {
-		Adapter adapter = null;
+	public AdapterProfile retrieveProfile(int index) {
+		AdapterProfile adapterProfile = null;
 		if (adapterProfiles != null && !adapterProfiles.isEmpty()) {
-			adapter = adapterProfiles.get(index);
+			adapterProfile = adapterProfiles.get(index);
 		}
-		return adapter;
+		return adapterProfile;
 	}
 
 	@Override
-	public List<Adapter> getAdapterProfiles() {
+	public List<AdapterProfile> getAdapterProfiles() {
 		return adapterProfiles;
 	}
 }

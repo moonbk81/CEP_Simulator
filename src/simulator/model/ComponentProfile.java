@@ -2,14 +2,14 @@ package simulator.model;
 
 import java.util.*;
 
-public class Component extends Profile {
+public class ComponentProfile extends Profile {
     private int complexity;
     private int complexityRange;
     private int memoryRange;
     private int memoryResource;
     private IComponentAction componentAction;
     
-    public Component() {
+    public ComponentProfile() {
     }
     // decorator pattern? builder pattern?
 
@@ -17,8 +17,8 @@ public class Component extends Profile {
 		return complexity;
 	}
 
-	public Component(int complexity, int complexityRange, int memoryRange,
-			int memoryResource, IComponentAction componentAction) {
+	public ComponentProfile(int complexity, int complexityRange, int memoryRange,
+							int memoryResource, IComponentAction componentAction) {
 		super();
 		this.complexity = complexity;
 		this.complexityRange = complexityRange;

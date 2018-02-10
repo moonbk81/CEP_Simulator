@@ -334,10 +334,10 @@ title __MODEL's Class Diagram__\n
   Adapter -up-|> Profile
   Adapter +-down- ProfileEnum
   AlarmAlertComponent -up-|> AbstractComponent
-  ArchitectureDescription o-- Source : source
-  ArchitectureDescription o-- Adapter : adapter
-  ArchitectureDescription o-- Event : event
-  ArchitectureDescription o-- Service : service
+  ArchitectureDescription o-- Source : sourceProfile
+  ArchitectureDescription o-- Adapter : adapterProfile
+  ArchitectureDescription o-- Event : eventProfile
+  ArchitectureDescription o-- Service : serviceProfile
   ArchitectureDescription o-- Component : component
   Component -up-|> Profile
   Component o-- IComponentAction : componentAction

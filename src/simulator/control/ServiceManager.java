@@ -2,10 +2,10 @@ package simulator.control;
 import java.util.*;
 
 import simulator.control.interfaces.IServiceManager;
-import simulator.model.Service;
+import simulator.model.ServiceProfile;
 
 public class ServiceManager implements IServiceManager {
-	private ArrayList<Service> serviceProfiles;
+	private ArrayList<ServiceProfile> serviceProfiles;
 	private SimulatorProxy proxy;
 
 	public ServiceManager(SimulatorProxy si) {
@@ -13,7 +13,7 @@ public class ServiceManager implements IServiceManager {
 		this.proxy = si;
 	}
 
-	public void registerProfile(Service profile) {
+	public void registerProfile(ServiceProfile profile) {
 		if (serviceProfiles != null) {
 			serviceProfiles.add(profile);
 		}
@@ -26,22 +26,22 @@ public class ServiceManager implements IServiceManager {
 		}
 	}
 
-	public void modifyProfile(int index, Service profile) {
+	public void modifyProfile(int index, ServiceProfile profile) {
 		if (serviceProfiles != null && !serviceProfiles.isEmpty()) {
 			serviceProfiles.set(index, profile);
 		}
 	}
 
-	public Service retrieveProfile(int index) {
-		Service service = null;
+	public ServiceProfile retrieveProfile(int index) {
+		ServiceProfile serviceProfile = null;
 		if (serviceProfiles != null && !serviceProfiles.isEmpty()) {
-			service = serviceProfiles.get(index);
+			serviceProfile = serviceProfiles.get(index);
 		}
-		return service;
+		return serviceProfile;
 	}
 
 	@Override
-	public List<Service> getServiceProfiles() {
+	public List<ServiceProfile> getServiceProfiles() {
 		return serviceProfiles;
 	}
 }

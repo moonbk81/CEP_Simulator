@@ -1,13 +1,13 @@
 package simulator.control.interfaces;
-import simulator.model.Component;
+import simulator.model.ComponentProfile;
 
 import java.util.List;
 
 public interface IComponentManager {
-	void registerProfile(Component profile);
+	void registerProfile(ComponentProfile profile);
 	void deleteProfile(int index);
-	void modifyProfile(int index, Component profile);
-	Component retrieveProfile(int index);
+	void modifyProfile(int index, ComponentProfile profile);
+	ComponentProfile retrieveProfile(int index);
 
-    List<Component> getComponentProfiles();
+    List<ComponentProfile> getComponentProfiles();
 }

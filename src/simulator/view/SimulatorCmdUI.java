@@ -59,18 +59,18 @@ public class SimulatorCmdUI {
         System.out.println("\t 0. Quit");
         System.out.println("\t 1. Sign On");
         System.out.println("\t 2. Register System Profile");
-        System.out.println("\t 3. Register Source Profile");
-        System.out.println("\t 4. Register Adapter profile");
-        System.out.println("\t 5. Register Event profile");
+        System.out.println("\t 3. Register SourceProfile Profile");
+        System.out.println("\t 4. Register AdapterProfile profile");
+        System.out.println("\t 5. Register EventProfile profile");
         System.out.println("\t 6. Register Component profile");
-        System.out.println("\t 7. Register Service Profile");
+        System.out.println("\t 7. Register ServiceProfile Profile");
         System.out.println("\t 8. Retrieve User Profile");
         System.out.println("\t 9. Retrieve System Profiles");
-        System.out.println("\t 10. Retrieve Source Profiles");
-        System.out.println("\t 11. Retrieve Adapter Profiles");
-        System.out.println("\t 12. Retrieve Event Profiles");
+        System.out.println("\t 10. Retrieve SourceProfile Profiles");
+        System.out.println("\t 11. Retrieve AdapterProfile Profiles");
+        System.out.println("\t 12. Retrieve EventProfile Profiles");
         System.out.println("\t 13. Retrieve Component Profiles");
-        System.out.println("\t 14. Retrieve Service Profiles");
+        System.out.println("\t 14. Retrieve ServiceProfile Profiles");
 
         int command = scanner.nextInt();
 

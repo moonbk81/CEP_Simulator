@@ -1,7 +1,7 @@
 package simulator.view;
 
 import simulator.control.SimulatorProxy;
-import simulator.model.Component;
+import simulator.model.ComponentProfile;
 
 import java.util.List;
 
@@ -18,9 +18,9 @@ public class ComponentView extends ProfileView {
     @Override
     public String retrieveCommand() {
         StringBuilder sb = new StringBuilder();
-        List<Component> components = getProxy().getComponentManager().getComponentProfiles();
+        List<ComponentProfile> components = getProxy().getComponentManager().getComponentProfiles();
 
-        for (Component component : components) {
+        for (ComponentProfile component : components) {
             sb.append(
                     "Component complexity: " + component.getComplexity() +
                             "\tcomplexity range: " + component.getComplexityRange() +

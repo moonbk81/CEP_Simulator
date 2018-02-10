@@ -1,16 +1,14 @@
 package simulator.model;
 
-import java.util.*;
-
 /**
  * 
  */
 public class ArchitectureDescription {
-	private Source source;
-	private Adapter adapter;
-	private Event event;
-	private Service service;
-	private Component component;
+	private SourceProfile sourceProfile;
+	private AdapterProfile adapterProfile;
+	private EventProfile eventProfile;
+	private ServiceProfile serviceProfile;
+	private ComponentProfile component;
 	private int AD_ID;
 	
 
@@ -20,53 +18,53 @@ public class ArchitectureDescription {
     public ArchitectureDescription() {
     }
 
-	public ArchitectureDescription(Source source, Adapter adapter, Event event,
-			Service service, Component component) {
+	public ArchitectureDescription(SourceProfile sourceProfile, AdapterProfile adapterProfile, EventProfile eventProfile,
+								   ServiceProfile serviceProfile, ComponentProfile component) {
 		super();
-		this.source = source;
-		this.adapter = adapter;
-		this.event = event;
-		this.service = service;
+		this.sourceProfile = sourceProfile;
+		this.adapterProfile = adapterProfile;
+		this.eventProfile = eventProfile;
+		this.serviceProfile = serviceProfile;
 		this.component = component;
 	}
 
-	public Source getSource() {
-		return source;
+	public SourceProfile getSourceProfile() {
+		return sourceProfile;
 	}
 
-	public void setSource(Source source) {
-		this.source = source;
+	public void setSourceProfile(SourceProfile sourceProfile) {
+		this.sourceProfile = sourceProfile;
 	}
 
-	public Adapter getAdapter() {
-		return adapter;
+	public AdapterProfile getAdapterProfile() {
+		return adapterProfile;
 	}
 
-	public void setAdapter(Adapter adapter) {
-		this.adapter = adapter;
+	public void setAdapterProfile(AdapterProfile adapterProfile) {
+		this.adapterProfile = adapterProfile;
 	}
 
-	public Event getEvent() {
-		return event;
+	public EventProfile getEventProfile() {
+		return eventProfile;
 	}
 
-	public void setEvent(Event event) {
-		this.event = event;
+	public void setEventProfile(EventProfile eventProfile) {
+		this.eventProfile = eventProfile;
 	}
 
-	public Service getService() {
-		return service;
+	public ServiceProfile getServiceProfile() {
+		return serviceProfile;
 	}
 
-	public void setService(Service service) {
-		this.service = service;
+	public void setServiceProfile(ServiceProfile serviceProfile) {
+		this.serviceProfile = serviceProfile;
 	}
 
-	public Component getComponent() {
+	public ComponentProfile getComponent() {
 		return component;
 	}
 
-	public void setComponent(Component component) {
+	public void setComponent(ComponentProfile component) {
 		this.component = component;
 	}
 }

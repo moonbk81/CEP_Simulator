@@ -1,8 +1,8 @@
 package simulator.view;
 
 import simulator.control.SimulatorProxy;
-import simulator.model.Component;
-import simulator.model.Service;
+import simulator.model.ComponentProfile;
+import simulator.model.ServiceProfile;
 
 import java.util.List;
 
@@ -19,13 +19,13 @@ public class ServiceView extends ProfileView {
     @Override
     public String retrieveCommand() {
         StringBuilder sb = new StringBuilder();
-        List<Service> services = getProxy().getServiceManager().getServiceProfiles();
+        List<ServiceProfile> serviceProfiles = getProxy().getServiceManager().getServiceProfiles();
 
-        for (Service service : services) {
+        for (ServiceProfile serviceProfile : serviceProfiles) {
             sb.append(
-                    "Service event id: " + service.getEventId() +
-                            "\tservice components: ");
-            for (Component component : service.getComponents()) {
+                    "ServiceProfile event id: " + serviceProfile.getEventId() +
+                            "\tserviceProfile components: ");
+            for (ComponentProfile component : serviceProfile.getComponents()) {
                 sb.append(component.getComponent() + ", ");
             }
             sb.append("\r\n");
