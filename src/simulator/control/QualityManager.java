@@ -11,28 +11,29 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class QualityManager implements IQualityManager {
-    private final int RESULT_LEVEL1     = 1;
-    private final int RESULT_LEVEL2      = 2;
-    private final int RESULT_LEVEL_ALL              = 3;
-
     private SimulatorProxy proxy;
-    private int level = 0;
+
     private ArchitectureDescription resultAd;
     private SystemProfile resultSysProfile;
     private ArrayList<IMonitor> monitorList;
+
+    private IMonitor resultMonitor;
 
     public QualityManager(SimulatorProxy si) {
     	System.out.println("Quality Manager");
     	this.proxy = si;
     	monitorList = new ArrayList<>();
+        resultMonitor = new ResultMonitor();
     }
 
     public void startMonitoringService() {
     	System.out.println("Start monitoring event service");
+    	addMonitor(resultMonitor);
     }
 
     public void stopMonitoringService() {
     	System.out.println("Stop monitoring event service");
+    	deleteMonitor(resultMonitor);
     }
 
 	public void pauseMonitoringService() {
@@ -45,40 +46,8 @@ public class QualityManager implements IQualityManager {
 	}
 
     @Override
-    public SimulationResult consistResultByVisualLevel() {
-        ResultBuilder resultBuilder = new ResultBuilder();
-
-        switch (getLevel()) {
-            case RESULT_LEVEL1:
-                return resultBuilder
-                            .setArchitectureDescription(ad)
-                            .setSystemProfile(profile)
-                            .build();
-            case RESULT_LEVEL2:
-                return resultBuilder
-                            .setTotalComplexity(compexity)
-                            .setTotalMemoryConsumption(memory)
-                            .build();
-            case RESULT_LEVEL_ALL:
-                return resultBuilder
-                            .setArchitectureDescription(ad)
-                            .setSystemProfile(profile)
-                            .setTotalComplexity(complexity)
-                            .setTotalMemoryConsumption(memory)
-                            .build();
-            default:
-                return resultBuilder.build();
-        }
-    }
-
-    @Override
-    public SimulationResult consistResultByUserPreference() {
-        return null;
-    }
-
-    @Override
     public void setResultLevel(int level) {
-        setLevel(level);
+        resultMonitor.setResultLevel(level);
     }
 
     @Override
@@ -94,20 +63,14 @@ public class QualityManager implements IQualityManager {
     }
 
     @Override
-    public void notifyMonitor() {
+    public void notifyMonitor(SimulationResult result) {
         System.out.println("Notify to monitor");
         for (int i = 0; i < monitorList.size(); i++) {
             IMonitor monitor = monitorList.get(i);
-            monitor.update(1,2,3);
+            ArchitectureDescription ad = result.getArchitectDescription();
+            monitor.update(ad.getEventProfile().getEventId(), result.getTotalComplexity(), result.getTotalMemoryConsumption(),
+                            ad, result.getSystemProfile());
         }
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 
     public class MonitorData extends Observable {

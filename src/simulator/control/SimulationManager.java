@@ -44,9 +44,9 @@ public class SimulationManager implements ISimulationManager {
 
     public void startSimulation() {
         proxy.getExecutionManager().designSimulationMethod();
-        proxy.getExecutionManager().executeEventService(archDescription, systemProfile);
         setState(SIMULATION_STATE.SIMULATION_STATE_START);
         proxy.getQualityManager().startMonitoringService();
+        proxy.getExecutionManager().executeEventService(archDescription, systemProfile);
     }
 
     public void stopSimulation() {

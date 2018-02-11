@@ -2,6 +2,7 @@ package simulator.control;
 
 import simulator.control.interfaces.IExecutionManager;
 import simulator.model.ArchitectureDescription;
+import simulator.model.SimulationResult;
 import simulator.model.SystemProfile;
 
 import java.util.concurrent.ExecutorService;
@@ -35,16 +36,18 @@ public class ExecutionManager implements IExecutionManager {
     }
 
     public void executeEventService(ArchitectureDescription ad, SystemProfile profile) {
+        // call by simulation manager to start execution of event service.
+        System.out.println("executeEventService(ad, profile");
         setAd(ad);
         setProfile(profile);
         createNewThread();
         runThreadAndExecuteService();
-        estimateEventServiceSimulation();
     }
 
     private void runThreadAndExecuteService() {
         try {
-            while (proxy.getSimulationManager().getState() == SIMULATION_STATE_START) {
+            //while (proxy.getSimulationManager().getState() == SIMULATION_STATE_START) {
+            for (int i = 0; i < 100; i++) {
                 Runnable r = new ExecuteRunnable();
                 executorService.execute(r);
             }
@@ -59,10 +62,11 @@ public class ExecutionManager implements IExecutionManager {
         executorService.shutdown();
     }
 
-    private void estimateEventServiceSimulation() {
+    private void estimateEventServiceSimulation(SimulationResult result) {
     	System.out.println("Estimate computing load, memory usage");
     	// Notify ad and profile to quality manager
         // ExecutionManager be Observer
+        proxy.getQualityManager().notifyMonitor(result);
     }
 
     private void createNewThread() {
@@ -94,7 +98,16 @@ public class ExecutionManager implements IExecutionManager {
     }
 
     private void executeEventService() {
-        System.out.println("Execute event service0");
+        System.out.println("Execute event service");
+        SimulationResult result = new SimulationResult();
+        int complexity = ad.getAdapterProfile().getComplexity() + ad.getComponent().getComplexity();
+        int consumption = ad.getAdapterProfile().getMemoryConsumption() + ad.getComponent().getMemoryResource();
+        result.setTotalComplexity(complexity);
+        result.setTotalMemoryConsumption(consumption);
+        result.setSystemProfile(getProfile());
+        result.setArchitectDescription(getAd());
+
+        estimateEventServiceSimulation(result);
     }
 
     class ExecuteRunnable implements Runnable {
@@ -102,7 +115,6 @@ public class ExecutionManager implements IExecutionManager {
         public void run() {
             System.out.println("Proceed event from queue");
             executeEventService();
-            estimateEventServiceSimulation();
         }
     }
 
