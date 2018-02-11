@@ -2,6 +2,9 @@ package simulator.control.interfaces;
 
 import simulator.control.SimulationManager;
 import simulator.control.SimulationManager.SIMULATION_STATE;
+import simulator.model.EventData;
+
+import java.util.Queue;
 
 public interface ISimulationManager {
     void chooseArchitectureDescription(int index);
@@ -19,4 +22,6 @@ public interface ISimulationManager {
     void setState(SIMULATION_STATE state);
 
     SIMULATION_STATE getState();
+
+    Queue<EventData> getEventQueue();
 }

@@ -33,6 +33,13 @@ public class ExecutionManager implements IExecutionManager {
 
     public void designSimulationMethod() {
     	System.out.println("Design simulation method!");
+    	// source generator
+
+        // prepare adapter
+
+        // prepare event generator
+
+        //
     }
 
     public void executeEventService(ArchitectureDescription ad, SystemProfile profile) {

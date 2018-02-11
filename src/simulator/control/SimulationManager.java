@@ -2,7 +2,11 @@ package simulator.control;
 
 import simulator.control.interfaces.ISimulationManager;
 import simulator.model.ArchitectureDescription;
+import simulator.model.EventData;
 import simulator.model.SystemProfile;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class SimulationManager implements ISimulationManager {
     public enum SIMULATION_STATE {
@@ -17,6 +21,8 @@ public class SimulationManager implements ISimulationManager {
 	private SystemProfile systemProfile;
 	private ArchitectureDescription archDescription;
 	private SIMULATION_STATE state;
+
+	private Queue<EventData> eventQueue;
 
     public SimulationManager() {
     	System.out.println("SimulationManager!");
@@ -43,6 +49,8 @@ public class SimulationManager implements ISimulationManager {
     }
 
     public void startSimulation() {
+        // prepare event queue
+        eventQueue = new LinkedList<>();
         proxy.getExecutionManager().designSimulationMethod();
         setState(SIMULATION_STATE.SIMULATION_STATE_START);
         proxy.getQualityManager().startMonitoringService();
@@ -63,6 +71,11 @@ public class SimulationManager implements ISimulationManager {
 
     public SIMULATION_STATE getState() {
         return state;
+    }
+
+    @Override
+    public Queue<EventData> getEventQueue() {
+        return eventQueue;
     }
 
     public void setState(SIMULATION_STATE state) {
