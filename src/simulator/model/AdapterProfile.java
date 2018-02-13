@@ -40,33 +40,5 @@ public class AdapterProfile extends Profile {
         this.memoryConsumption = memoryConsumption;
     }
 
-    public interface IAdapter {
-        public String getName();
-    }
 
-    public abstract class AbstractAdapter implements IAdapter {
-        protected  IAdapter adapter;
-        public AbstractAdapter(IAdapter adapter) {
-            this.adapter = adapter;
-        }
-
-        public abstract String getName();
-    }
-
-    public class SingleAdapter implements IAdapter {
-        public String getName() {
-            return "AdapterProfile";
-        }
-    }
-
-    public class SourceTypeFireAdapter extends AbstractAdapter {
-        public SourceTypeFireAdapter(IAdapter adapter) {
-            super(adapter);
-        }
-
-        @Override
-        public String getName() {
-            return String.format(" Fire Alarm %s", adapter.getName());
-        }
-    }
 }
