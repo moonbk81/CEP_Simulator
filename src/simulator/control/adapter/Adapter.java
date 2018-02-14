@@ -1,4 +1,4 @@
-package simulator.model;
+package simulator.control.adapter;
 
 public abstract class Adapter {
     protected int complexity;

@@ -10,4 +10,5 @@ public interface IAdapterManager {
 	AdapterProfile retrieveProfile(int index);
 
     List<AdapterProfile> getAdapterProfiles();
+    void prepareAdapter();
 }
