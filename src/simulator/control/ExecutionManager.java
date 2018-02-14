@@ -1,5 +1,6 @@
 package simulator.control;
 
+import simulator.control.adapter.Adapter;
 import simulator.control.interfaces.IExecutionManager;
 import simulator.model.ArchitectureDescription;
 import simulator.model.SimulationResult;
@@ -22,6 +23,10 @@ public class ExecutionManager implements IExecutionManager {
     private ArchitectureDescription ad;
     private SystemProfile profile;
     private ExecutorService executorService;
+    private Adapter[] adapters = null;
+    private EventGenerator generator;
+    private EventExecutor executor;
+    private ResultMonitor monitor;
 
     /**
      * Default constructor
